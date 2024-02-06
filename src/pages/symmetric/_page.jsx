@@ -32,7 +32,7 @@ export default function Page() {
             SYMMETRIC ENCRYPTION
           </header>
           <main className="flex-auto flex h-full w-full justify-between items-center divide-x">
-            <section className="h-full w-2/3 flex flex-col divide-y">
+            <section className="h-full w-full flex flex-col divide-y">
               <div className="h-full w-full p-[3vmin]">
                 <textarea
                   placeholder="message"
@@ -60,7 +60,40 @@ export default function Page() {
                   }}
                 />
               </div>
+              <div className="w-full p-[3vmin]">
+                <input
+                  placeholder="key"
+                  className="outline-none bg-transparent h-full w-full resize-none font-['JetBrains_Mono']"
+                  value={displayedKey}
+                  onChange={async (e) => {
+                    setDisplayedKey(e.target.value);
+                    setKey(
+                      await importKey(
+                        new Uint8Array(
+                          Array.from(window.atob(e.target.value)).map((c) =>
+                            c.charCodeAt()
+                          )
+                        )
+                      )
+                    );
+                  }}
+                />
+              </div>
               <div className="w-full flex divide-x">
+                <button
+                  className="block w-full p-[3vmin] transition hover:bg-white hover:text-black text-left"
+                  onClick={async () => {
+                    const generatedKey = await generateKey();
+                    setKey(generatedKey);
+                    setDisplayedKey(
+                      window.btoa(
+                        String.fromCharCode(...(await exportKey(generatedKey)))
+                      )
+                    );
+                  }}
+                >
+                  GENERATE KEY
+                </button>
                 <button
                   className="block w-full p-[3vmin] transition hover:bg-white hover:text-black text-left"
                   onClick={async () => {
@@ -99,41 +132,6 @@ export default function Page() {
                 </button>
               </div>
             </section>
-            <aside className="h-full w-1/3 flex flex-col divide-y">
-              <div className="h-full p-[3vmin]">
-                <textarea
-                  placeholder="key"
-                  className="outline-none bg-transparent h-full w-full resize-none font-['JetBrains_Mono']"
-                  value={displayedKey}
-                  onChange={async (e) => {
-                    setDisplayedKey(e.target.value);
-                    setKey(
-                      await importKey(
-                        new Uint8Array(
-                          Array.from(window.atob(e.target.value)).map((c) =>
-                            c.charCodeAt()
-                          )
-                        )
-                      )
-                    );
-                  }}
-                />
-              </div>
-              <button
-                className="block p-[3vmin] transition hover:bg-white hover:text-black text-left"
-                onClick={async () => {
-                  const generatedKey = await generateKey();
-                  setKey(generatedKey);
-                  setDisplayedKey(
-                    window.btoa(
-                      String.fromCharCode(...(await exportKey(generatedKey)))
-                    )
-                  );
-                }}
-              >
-                GENERATE KEY
-              </button>
-            </aside>
           </main>
         </section>
       </section>
