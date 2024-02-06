@@ -39,11 +39,11 @@ export default function Page() {
                 }}
               />
             </div>
-            <div className="h-full w-full flex break-all divide-x">
-              <div className="p-[3vmin] h-full w-full font-['JetBrains_Mono']">
+            <div className="w-full flex divide-x">
+              <div className="p-[3vmin] w-full break-all font-['JetBrains_Mono']">
                 {hashdata}
               </div>
-              <aside className="flex flex-col justify-evenly text-nowrap">
+              <aside className="flex justify-evenly whitespace-nowrap">
                 <button
                   className="block p-[3vmin] h-full w-full transition hover:bg-white hover:text-black text-left"
                   onClick={() => {
