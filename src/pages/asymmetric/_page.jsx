@@ -20,7 +20,7 @@ export default function Page() {
   return (
     <motion.section
       animate={{ opacity: [0, 1] }}
-      className="h-full w-full text-[3vmin]"
+      className="h-full w-full text-[1.5rem]"
     >
       <section className="flex h-full w-full divide-x">
         <aside className="transition hover:bg-white hover:text-black">
@@ -40,7 +40,7 @@ export default function Page() {
               <div className="p-[3vmin] h-full">
                 <textarea
                   placeholder="public key"
-                  className="outline-none bg-transparent h-full w-full resize-none text-[1.3vmin] font-['JetBrains_Mono']"
+                  className="outline-none bg-transparent h-full w-full resize-none text-[1rem] font-['JetBrains_Mono']"
                   value={displayedPublicKey}
                   onChange={async (e) => {
                     setDisplayedPublicKey(e.target.value);
@@ -59,7 +59,7 @@ export default function Page() {
               <div className="p-[3vmin] h-full">
                 <textarea
                   placeholder="private key"
-                  className="outline-none bg-transparent h-full w-full resize-none text-[1.3vmin] font-['JetBrains_Mono']"
+                  className="outline-none bg-transparent h-full w-full resize-none text-[1rem] font-['JetBrains_Mono']"
                   value={displayedPrivateKey}
                   onChange={async (e) => {
                     setDisplayedPrivateKey(e.target.value);
@@ -97,23 +97,42 @@ export default function Page() {
                   );
                 }}
               >
-                <div className="h-full w-full text-left">GENERATE KEYS</div>
+                <div className="h-full w-full text-left whitespace-nowrap">GENERATE KEYS</div>
               </button>
             </div>
             <div className="h-full w-full flex flex-col divide-y">
-              <div className="p-[3vmin] h-2/3 w-full">
+              <div className="p-[3vmin] h-full w-full">
                 <textarea
                   placeholder="message"
-                  className="outline-none bg-transparent h-full w-full resize-none font-['JetBrains_Mono']"
+                  className="outline-none bg-transparent h-full w-full resize-none text-[1rem] font-['JetBrains_Mono']"
                   value={data}
                   onChange={(e) => {
                     setData(e.target.value);
                   }}
                 />
               </div>
-              <div className="flex divide-x h-1/3">
+              <div className="p-[3vmin] h-full w-full">
+                <textarea
+                  placeholder="another public key"
+                  className="outline-none bg-transparent h-full w-full resize-none text-[1rem] font-['JetBrains_Mono']"
+                  value={displayedPublicKeyA}
+                  onChange={async (e) => {
+                    setDisplayedPublicKeyA(e.target.value);
+                    setPublicKeyA(
+                      await importPublicKey(
+                        new Uint8Array(
+                          Array.from(window.atob(e.target.value)).map((c) =>
+                            c.charCodeAt()
+                          )
+                        )
+                      )
+                    );
+                  }}
+                />
+              </div>
+              <div className="flex divide-x">
                 <button
-                  className="block p-[3vmin] transition hover:bg-white hover:text-black text-left"
+                  className="block w-full p-[3vmin] transition hover:bg-white hover:text-black text-left"
                   onClick={async () => {
                     const encrypted = await encrypt(data, publicKeyA);
                     setData(window.btoa(String.fromCharCode(...encrypted)));
@@ -122,7 +141,7 @@ export default function Page() {
                   <div className="h-full w-full text-left">ENCRYPT</div>
                 </button>
                 <button
-                  className="block p-[3vmin] transition hover:bg-white hover:text-black text-left"
+                  className="block w-full p-[3vmin] transition hover:bg-white hover:text-black text-left"
                   onClick={async () => {
                     const decrypted = await decrypt(
                       new Uint8Array(
@@ -135,25 +154,6 @@ export default function Page() {
                 >
                   <div className="h-full w-full text-left">DECRYPT</div>
                 </button>
-                <div className="p-[3vmin] h-full w-full">
-                  <textarea
-                    placeholder="another public key"
-                    className="outline-none bg-transparent h-full w-full resize-none text-[1.55vmin] font-['JetBrains_Mono']"
-                    value={displayedPublicKeyA}
-                    onChange={async (e) => {
-                      setDisplayedPublicKeyA(e.target.value);
-                      setPublicKeyA(
-                        await importPublicKey(
-                          new Uint8Array(
-                            Array.from(window.atob(e.target.value)).map((c) =>
-                              c.charCodeAt()
-                            )
-                          )
-                        )
-                      );
-                    }}
-                  />
-                </div>
               </div>
             </div>
           </main>

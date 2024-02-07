@@ -19,7 +19,7 @@ export default function Page() {
   return (
     <motion.section
       animate={{ opacity: [0, 1] }}
-      className="h-full w-full text-[3vmin]"
+      className="h-full w-full text-[1.5rem]"
     >
       <section className="flex h-full w-full divide-x">
         <aside className="transition hover:bg-white hover:text-black">
@@ -45,7 +45,7 @@ export default function Page() {
               <div className="h-1/2 w-full p-[3vmin]">
                 <textarea
                   placeholder="message"
-                  className="h-full w-full bg-transparent resize-none outline-none font-['JetBrains_Mono']"
+                  className="h-full w-full bg-transparent resize-none outline-none text-[1rem] font-['JetBrains_Mono']"
                   onChange={(e) => {
                     setData(e.target.value);
                   }}
@@ -55,7 +55,7 @@ export default function Page() {
                 <div className="h-full w-1/2 p-[3vmin]">
                   <textarea
                     placeholder="signature"
-                    className="outline-none bg-transparent h-full w-full resize-none text-[2vmin] font-['JetBrains_Mono']"
+                    className="outline-none bg-transparent h-full w-full resize-none text-[1rem] font-['JetBrains_Mono']"
                     value={displayedSignature}
                     onChange={async (e) => {
                       setDisplayedSignature(e.target.value);
@@ -72,7 +72,7 @@ export default function Page() {
                 <div className="h-full w-1/2 p-[3vmin] break-all">
                   <textarea
                     placeholder="public key"
-                    className="outline-none bg-transparent h-full w-full resize-none text-[2vmin] font-['JetBrains_Mono']"
+                    className="outline-none bg-transparent h-full w-full resize-none text-[1rem] font-['JetBrains_Mono']"
                     value={displayedPublicKey}
                     onChange={async (e) => {
                       setDisplayedPublicKey(e.target.value);
@@ -88,7 +88,7 @@ export default function Page() {
                 <div className="h-full w-1/2 p-[3vmin] break-all">
                   <textarea
                     placeholder="private key"
-                    className="outline-none bg-transparent h-full w-full resize-none text-[2vmin] font-['JetBrains_Mono']"
+                    className="outline-none bg-transparent h-full w-full resize-none text-[1rem] font-['JetBrains_Mono']"
                     value={displayedPrivateKey}
                     onChange={async (e) => {
                       setDisplayedPrivateKey(e.target.value);

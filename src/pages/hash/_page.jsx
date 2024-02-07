@@ -13,7 +13,7 @@ export default function Page() {
   return (
     <motion.section
       animate={{ opacity: [0, 1] }}
-      className="h-full w-full text-[3vmin]"
+      className="h-full w-full text-[1.5rem]"
     >
       <section className="flex h-full w-full divide-x">
         <aside className="transition hover:bg-white hover:text-black">
@@ -33,14 +33,14 @@ export default function Page() {
             <div className="h-full w-full p-[3vmin]">
               <textarea
                 placeholder="message"
-                className="h-full w-full bg-black resize-none outline-none font-['JetBrains_Mono']"
+                className="h-full w-full bg-black resize-none outline-none text-[1rem] font-['JetBrains_Mono']"
                 onChange={(e) => {
                   setData(e.target.value);
                 }}
               />
             </div>
             <div className="w-full flex divide-x">
-              <div className="p-[3vmin] w-full break-all font-['JetBrains_Mono']">
+              <div className="p-[3vmin] w-full break-all text-[1rem] font-['JetBrains_Mono']">
                 {hashdata}
               </div>
               <aside className="flex justify-evenly whitespace-nowrap">
