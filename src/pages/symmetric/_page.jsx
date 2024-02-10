@@ -16,7 +16,7 @@ export default function Page() {
   return (
     <motion.section
       animate={{ opacity: [0, 1] }}
-      className="h-full w-full text-[1.5rem]"
+      className="h-full w-full [font-size:clamp(1rem,3vmin,1.5rem)]"
     >
       <section className="flex h-full w-full divide-x">
         <aside className="transition hover:bg-white hover:text-black">

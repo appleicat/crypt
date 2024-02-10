@@ -13,7 +13,7 @@ export default function Page() {
   return (
     <motion.section
       animate={{ opacity: [0, 1] }}
-      className="h-full w-full text-[1.5rem]"
+      className="h-full w-full [font-size:clamp(1rem,3vmin,1.5rem)]"
     >
       <section className="flex h-full w-full divide-x">
         <aside className="transition hover:bg-white hover:text-black">
@@ -39,13 +39,13 @@ export default function Page() {
                 }}
               />
             </div>
-            <div className="w-full flex divide-x">
+            <div className="w-full flex flex-col divide-y">
               <div className="p-[3vmin] w-full break-all text-[1rem] font-['JetBrains_Mono']">
                 {hashdata}
               </div>
-              <aside className="flex justify-evenly whitespace-nowrap">
+              <div className="flex justify-evenly">
                 <button
-                  className="block p-[3vmin] h-full w-full transition hover:bg-white hover:text-black text-left"
+                  className="p-[3vmin] w-full transition hover:bg-white hover:text-black"
                   onClick={() => {
                     setType('SHA-1');
                   }}
@@ -53,7 +53,7 @@ export default function Page() {
                   SHA-1
                 </button>
                 <button
-                  className="block p-[3vmin] h-full w-full transition hover:bg-white hover:text-black text-left"
+                  className="p-[3vmin] w-full transition hover:bg-white hover:text-black"
                   onClick={() => {
                     setType('SHA-256');
                   }}
@@ -61,7 +61,7 @@ export default function Page() {
                   SHA-256
                 </button>
                 <button
-                  className="block p-[3vmin] h-full w-full transition hover:bg-white hover:text-black text-left"
+                  className="p-[3vmin] w-full transition hover:bg-white hover:text-black"
                   onClick={() => {
                     setType('SHA-384');
                   }}
@@ -69,14 +69,14 @@ export default function Page() {
                   SHA-384
                 </button>
                 <button
-                  className="block p-[3vmin] h-full w-full transition hover:bg-white hover:text-black text-left"
+                  className="p-[3vmin] w-full transition hover:bg-white hover:text-black"
                   onClick={() => {
                     setType('SHA-512');
                   }}
                 >
                   SHA-512
                 </button>
-              </aside>
+              </div>
             </div>
           </main>
         </section>

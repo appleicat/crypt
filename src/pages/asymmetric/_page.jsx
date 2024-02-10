@@ -20,7 +20,7 @@ export default function Page() {
   return (
     <motion.section
       animate={{ opacity: [0, 1] }}
-      className="h-full w-full text-[1.5rem]"
+      className="h-full w-full [font-size:clamp(1rem,3vmin,1.5rem)]"
     >
       <section className="flex h-full w-full divide-x">
         <aside className="transition hover:bg-white hover:text-black">
@@ -97,7 +97,9 @@ export default function Page() {
                   );
                 }}
               >
-                <div className="h-full w-full text-left whitespace-nowrap">GENERATE KEYS</div>
+                <div className="h-full w-full text-left break-all">
+                  GENERATE KEYS
+                </div>
               </button>
             </div>
             <div className="h-full w-full flex flex-col divide-y">
@@ -138,7 +140,9 @@ export default function Page() {
                     setData(window.btoa(String.fromCharCode(...encrypted)));
                   }}
                 >
-                  <div className="h-full w-full text-left">ENCRYPT</div>
+                  <div className="h-full w-full text-left break-all">
+                    ENCRYPT
+                  </div>
                 </button>
                 <button
                   className="block w-full p-[3vmin] transition hover:bg-white hover:text-black text-left"
@@ -152,7 +156,9 @@ export default function Page() {
                     setData(decrypted);
                   }}
                 >
-                  <div className="h-full w-full text-left">DECRYPT</div>
+                  <div className="h-full w-full text-left break-all">
+                    DECRYPT
+                  </div>
                 </button>
               </div>
             </div>
